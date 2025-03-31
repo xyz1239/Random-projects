@@ -43,5 +43,3 @@ def payrollcalc() -> None:
 
 #runs program
 payrollcalc()
-
-
