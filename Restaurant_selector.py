@@ -36,8 +36,6 @@ def ask_yn(prompt:str) -> bool:
             return False
         print("not a yes or no, please try again")
 
-
-
 def diet_inputs():
     vegetarian: bool = ask_yn("Is anyone in you party vegetarian?: ")
     vegan: bool = ask_yn("Is anyone in you party vegan?: ")
@@ -47,9 +45,5 @@ def diet_inputs():
     for r in RR:
         if r.diet.match(required):
             print(r.name)
-
-
-
-
 
 diet_inputs()
