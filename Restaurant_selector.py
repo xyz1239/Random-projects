@@ -1,12 +1,13 @@
 from dataclasses import dataclass
 
+
 @dataclass
 class DietRestrictions:
     vegetarian: bool
     vegan: bool
     glutenfree: bool
 
-    def match(self, required: 'DietRestrictions') -> bool:
+    def match(self, required: "DietRestrictions") -> bool:
         if required.vegetarian and not self.vegetarian:
             return False
         if required.vegan and not self.vegan:
@@ -15,19 +16,23 @@ class DietRestrictions:
             return False
         return True
 
+
 @dataclass
 class Restaurant:
     name: str
     diet: DietRestrictions
 
-RR = [Restaurant("joe's pizza", DietRestrictions(False, False, False)),
-Restaurant("Main Street Pizza Company", DietRestrictions(True, False, True)),
-Restaurant("Corner Café", DietRestrictions(True, True, True)),
-Restaurant("Mama’s Fine Italian", DietRestrictions(True, False, False)),
-Restaurant("The Chef’s Kitchen", DietRestrictions(True, True, True))]
+
+RR = [
+    Restaurant("joe's pizza", DietRestrictions(False, False, False)),
+    Restaurant("Main Street Pizza Company", DietRestrictions(True, False, True)),
+    Restaurant("Corner Café", DietRestrictions(True, True, True)),
+    Restaurant("Mama’s Fine Italian", DietRestrictions(True, False, False)),
+    Restaurant("The Chef’s Kitchen", DietRestrictions(True, True, True)),
+]
 
 
-def ask_yn(prompt:str) -> bool:
+def ask_yn(prompt: str) -> bool:
     while True:
         response: str = input(prompt)
         if response.lower() in ("y", "yes"):
@@ -36,7 +41,8 @@ def ask_yn(prompt:str) -> bool:
             return False
         print("not a yes or no, please try again")
 
-def diet_inputs():
+
+def diet_inputs() -> None:
     vegetarian: bool = ask_yn("Is anyone in you party vegetarian?: ")
     vegan: bool = ask_yn("Is anyone in you party vegan?: ")
     glutenfree: bool = ask_yn("Is anyone in you party glutenfree?: ")
@@ -45,5 +51,6 @@ def diet_inputs():
     for r in RR:
         if r.diet.match(required):
             print(r.name)
+
 
 diet_inputs()

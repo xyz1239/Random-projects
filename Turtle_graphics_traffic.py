@@ -1,7 +1,7 @@
 import turtle
 
 
-def draw_traffic_light():
+def draw_traffic_light() -> None:
     # Initialize Turtle
     screen = turtle.Screen()
     screen.title("Traffic Light")
