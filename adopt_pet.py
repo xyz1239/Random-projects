@@ -1,4 +1,4 @@
-from typing import Dict, Any
+from typing import Dict, Any, List
 
 
 def main() -> None:
@@ -64,8 +64,8 @@ def main() -> None:
                 print("No pets in the database.")
                 continue
             print("Pet Records:")
-            for idx, data in enumerate(pets.values(), 1):
-                print(f"{idx}. {data['name']} ({data['type']}) ({data['owner']})")
+            for idx, data2 in enumerate(pets.values(), 1):
+                print(f"{idx}. {data2['name']} ({data2['type']}) ({data2['owner']})")
 
         elif choice == "4":
             # Define Parent-Child Relationship
@@ -116,7 +116,7 @@ def main() -> None:
             if normalized not in pets:
                 print(f"{name} not found.")
                 continue
-            data = pets[normalized]
+            data: Dict[str, Any] = pets[normalized]
             print(f"Family for {data['name']}:")
             print("Parents:")
             if len(data["parents"]) > 0:
@@ -153,7 +153,7 @@ def main() -> None:
 
         elif choice == "7":
             # List All Owners and Their Pets
-            owner_dict: Dict[str, Dict[str, Any]] = {}
+            owner_dict: Dict[str, List[str]] = {}
             for pet in pets.values():
                 if pet["owner"]:
                     if pet["owner"] not in owner_dict:
