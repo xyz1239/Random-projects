@@ -18,7 +18,7 @@ def main() -> None:
         choice = input("Choose an option: ").strip()
 
         if choice == "1":
-            # Register Pet (with case normalization)
+            # Register Pet
             while True:
                 name = input("Enter the new pet's name: ").strip()
                 if not name:
@@ -38,7 +38,7 @@ def main() -> None:
                 break
 
         elif choice == "2":
-            # Update Animal Type (case-insensitive lookup)
+            # Update Animal Type
             if not pets:
                 print("The database is empty. Please register a pet first.")
                 continue
@@ -55,7 +55,7 @@ def main() -> None:
             print(f"{name}'s type updated to {new_type}.")
 
         elif choice == "3":
-            # List All Pets (preserve original casing)
+            # List All Pets
             if not pets:
                 print("No pets in the database.")
                 continue
@@ -64,7 +64,7 @@ def main() -> None:
                 print(f"{idx}. {data['name']} ({data['type']})")
 
         elif choice == "4":
-            # Define Parent-Child Relationship (case-insensitive + self-check)
+            # Define Parent-Child Relationship
             if not pets:
                 print(
                     "Not enough pets to define a parent-child relationship. Please register more pets."
@@ -103,7 +103,7 @@ def main() -> None:
             print(f"{parent} is now the parent of {child}.")
 
         elif choice == "5":
-            # Show Pet's Family (case-insensitive lookup)
+            # Show Pet's Family
             if not pets:
                 print("Database is empty. Please register a pet first.")
                 continue
@@ -122,6 +122,7 @@ def main() -> None:
                 print("\n".join([f"- {name}" for name in data["children"]]))
 
         elif choice == "0":
+            # Exit program
             print("Exiting the program. Goodbye!")
             break
 

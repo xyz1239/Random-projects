@@ -10,7 +10,7 @@ def draw_traffic_light() -> None:
     pen.speed(2)
     pen.width(4)
 
-    # Draw outer black box (250 units wide)
+    # Draw outer black box
     pen.color("black")
     pen.penup()
     pen.goto(-40, -250)
@@ -23,7 +23,7 @@ def draw_traffic_light() -> None:
         pen.left(90)
     pen.end_fill()
 
-    # Draw thicker white border
+    # Draw white border
     pen.color("white")
     pen.width(8)
     pen.penup()
@@ -36,7 +36,7 @@ def draw_traffic_light() -> None:
         pen.left(90)
     pen.width(4)
 
-    # Draw centered circles
+    # Draw circles
     colors = ["red", "yellow", "green"]
     vertical_spacing = 160
     y_positions = [vertical_spacing, 0, -vertical_spacing]
