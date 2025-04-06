@@ -64,8 +64,8 @@ def main() -> None:
                 print("No pets in the database.")
                 continue
             print("Pet Records:")
-            for idx, data2 in enumerate(pets.values(), 1):
-                print(f"{idx}. {data2['name']} ({data2['type']}) ({data2['owner']})")
+            for idx, data in enumerate(pets.values(), 1):
+                print(f"{idx}. {data['name']} ({data['type']}) ({data['owner']})")
 
         elif choice == "4":
             # Define Parent-Child Relationship
