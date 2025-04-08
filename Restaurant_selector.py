@@ -1,6 +1,7 @@
 from dataclasses import dataclass
 
 
+#  Add Diet class
 @dataclass
 class DietRestrictions:
     vegetarian: bool
@@ -17,12 +18,14 @@ class DietRestrictions:
         return True
 
 
+# Add restarant class
 @dataclass
 class Restaurant:
     name: str
     diet: DietRestrictions
 
 
+# List of Restaurants and Diets
 RR = [
     Restaurant("joe's pizza", DietRestrictions(False, False, False)),
     Restaurant("Main Street Pizza Company", DietRestrictions(True, False, True)),
@@ -32,6 +35,7 @@ RR = [
 ]
 
 
+# Prompt validation
 def ask_yn(prompt: str) -> bool:
     while True:
         response: str = input(prompt)
@@ -42,6 +46,7 @@ def ask_yn(prompt: str) -> bool:
         print("not a yes or no, please try again")
 
 
+# Diet inputs
 def diet_inputs() -> None:
     vegetarian: bool = ask_yn("Is anyone in you party vegetarian?: ")
     vegan: bool = ask_yn("Is anyone in you party vegan?: ")

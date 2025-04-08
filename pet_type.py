@@ -1,6 +1,7 @@
 from typing import Dict
 
 
+# register pets
 def register_pet(pets: Dict[str, str]):
     while True:
         name = input("Enter the new pet's name: ").strip()
@@ -32,9 +33,9 @@ def main() -> None:
             register_pet(pets)
 
         elif choice == "2":
-            if not pets:  # Check if database is empty FIRST
+            if not pets:  # Check if database is empty
                 print("The database is empty. Please register a pet first.")
-                continue  # Skip to main menu
+                continue
 
             # Update Animal Type
             while True:
@@ -46,7 +47,7 @@ def main() -> None:
                     print(
                         f"Huh? We don't have a {name} in our database. Try a registered name!"
                     )
-                    break  # Exit loop to menu
+                    break
                 animal_type = input(
                     f"Enter {name}'s animal type (e.g., Dog, Cat): "
                 ).strip()
