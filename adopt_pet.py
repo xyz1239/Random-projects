@@ -116,7 +116,7 @@ def main() -> None:
             if normalized not in pets:
                 print(f"{name} not found.")
                 continue
-            data: Dict[str, Any] = pets[normalized]
+            data = pets[normalized]
             print(f"Family for {data['name']}:")
             print("Parents:")
             if len(data["parents"]) > 0:
