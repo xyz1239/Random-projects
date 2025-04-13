@@ -82,8 +82,12 @@ def SMC():
         print("Problem 3: Syrup Manufacturing Control has been selected")
         L_max = int(input("Is the level at maximum? (answer 1 for yes or 0 for no)"))
         L_min = int(input("Is the level at minimum? (answer 1 for yes or 0 for no)"))
-        F_inlet = int(input(""))
-        Temp = int(input(""))
+        F_inlet = int(
+            input(
+                "Is there liquid flowing past the sensor (answer 1 for yes or 0 for no)"
+            )
+        )
+        Temp = int(input("Is the Syrup mixture at temp (answer 1 for yes or 0 for no)"))
         print("=" * 25)
     except ValueError:
         print("Error: Please enter either a 0 or a 1")
@@ -113,8 +117,12 @@ def SMC_Logic():
         print("Problem 3: Syrup Manufacturing Control has been selected")
         L_max = int(input("Is the level at maximum? (answer 1 for yes or 0 for no)"))
         L_min = int(input("Is the level at minimum? (answer 1 for yes or 0 for no)"))
-        F_inlet = int(input(""))
-        Temp = int(input(""))
+        F_inlet = int(
+            input(
+                "Is there liquid flowing past the sensor (answer 1 for yes or 0 for no)"
+            )
+        )
+        Temp = int(input("Is the Syrup mixture at temp (answer 1 for yes or 0 for no)"))
         print("=" * 25)
     except ValueError:
         print("Error: Please enter either a 0 or a 1")
