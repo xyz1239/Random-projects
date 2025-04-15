@@ -41,7 +41,7 @@ def CSA():
         print("Problem 2: Car Seatbelt Alarm System has been selected")
         DRIV = int(input("Is the driver seat occupied? (answer 1 for yes or 0 for no)"))
         PASS = int(
-            input("Is the passanger seat occupied? (answer 1 for yes or 0 for no)")
+            input("Is the passenger seat occupied? (answer 1 for yes or 0 for no)")
         )
         IGN = int(input("Is the igniton on? (answer 1 for yes or 0 for no)"))
         BELTD = int(
@@ -82,8 +82,12 @@ def SMC():
         print("Problem 3: Syrup Manufacturing Control has been selected")
         L_max = int(input("Is the level at maximum? (answer 1 for yes or 0 for no)"))
         L_min = int(input("Is the level at minimum? (answer 1 for yes or 0 for no)"))
-        F_inlet = int(input(""))
-        Temp = int(input(""))
+        F_inlet = int(
+            input(
+                "Is there liquid flowing past the sensor (answer 1 for yes or 0 for no)"
+            )
+        )
+        Temp = int(input("Is the Syrup mixture at temp (answer 1 for yes or 0 for no)"))
         print("=" * 25)
     except ValueError:
         print("Error: Please enter either a 0 or a 1")
@@ -97,12 +101,15 @@ def SMC():
         L_max == 0 and L_min == 0 and F_inlet == 0
     )
     V_outlet = L_min == 1 and F_inlet == 0 and Temp == 1
+    Invalid = L_min == 0 and L_max == 1
 
-    if V_inlet or V_outlet:
+    if V_inlet or V_outlet or Invalid:
         if V_inlet:
             print("Inlet is open.")
         if V_outlet:
             print("Outlet is open.")
+        if Invalid:
+            print("This set of inputs has an invalid output.")
     else:
         print("Nothing is open.")
 
@@ -113,8 +120,12 @@ def SMC_Logic():
         print("Problem 3: Syrup Manufacturing Control has been selected")
         L_max = int(input("Is the level at maximum? (answer 1 for yes or 0 for no)"))
         L_min = int(input("Is the level at minimum? (answer 1 for yes or 0 for no)"))
-        F_inlet = int(input(""))
-        Temp = int(input(""))
+        F_inlet = int(
+            input(
+                "Is there liquid flowing past the sensor (answer 1 for yes or 0 for no)"
+            )
+        )
+        Temp = int(input("Is the Syrup mixture at temp (answer 1 for yes or 0 for no)"))
         print("=" * 25)
     except ValueError:
         print("Error: Please enter either a 0 or a 1")
@@ -132,12 +143,15 @@ def SMC_Logic():
     V_outlet = (not L_max and L_min and not F_inlet and Temp) or (
         L_max and L_min and not F_inlet and Temp
     )
+    Invalid = L_max and not L_min
 
     if V_inlet or V_outlet:
         if V_inlet:
             print("Inlet is open.")
         if V_outlet:
             print("Outlet is open.")
+        if Invalid:
+            print("This set of inputs has an invalid output.")
     else:
         print("Nothing is open.")
 
