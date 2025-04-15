@@ -12,3 +12,4 @@ with open("students.csv", "r") as file:
     next(reader)
     # Read the rest of the rows
 
+hello max
