@@ -1,16 +1,15 @@
 import csv
+import tabulate as tb
 
-open(
-    "students.csv",
-)
-
-with open("students.csv", "r") as file:
+with open("students.csv", newline="", encoding="utf-8") as file:
     reader = csv.reader(file)
-    for row in reader:
-        print(row)
-    delimiter=",",
-    quotechar='"',
+    header = next(reader)
+    data = [row for row in reader]
 
-    # Skip the header row
-    next(reader)
-    # Read the rest of the rows
+
+print(tb.tabulate(data, headers=header, tablefmt="grid"))
+
+
+    
+
+    
