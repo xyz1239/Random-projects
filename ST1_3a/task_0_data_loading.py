@@ -61,3 +61,16 @@ def main():
         for course_code, course_name, max_capacity in reader:
             courses.append(courses(course_code, course_name, max_capacity))
 
+    print (f"Initialized {len(students)} students and {len(courses)} courses.")
+    
+    print("Students:")
+    for student in students:
+        print(student)
+    
+    print("\nCourses:")
+    for course in courses:
+        print(course)
+
+
+if __name__ == "__main__":
+    main()
