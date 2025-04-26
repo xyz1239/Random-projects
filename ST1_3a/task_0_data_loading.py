@@ -71,10 +71,7 @@ def main():
     print("Courses:")
     print(tb.tabulate(course_table, headers=["Course Code", "Course Name", "Max Capacity"], tablefmt="grid"))
    
-"""
-wooo
-hooo
-"""
+
 
 if __name__ == "__main__":
     main()
