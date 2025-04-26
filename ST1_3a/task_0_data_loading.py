@@ -1,7 +1,7 @@
 import csv
 import tabulate as tb
 
-class students: 
+class Student: 
     def __init__(self, student_id, name, student_type):
         self.__student_id = student_id
         self.__name = name
@@ -24,7 +24,7 @@ class students:
         return f"{self.name} (ID: {self.student_id}, Type: {self.student_type})"
 
     
-class courses:
+class Course:
     def __init__(self, course_code, course_name, max_capacity):
         self.__course_code = course_code
         self.__course_name = course_name
@@ -53,23 +53,24 @@ def main():
         reader = csv.reader(file)
         next(reader)
         for student_id, name, student_type in reader:
-            students.append(students(student_id, name, student_type))
+            students.append(Student(student_id, name, student_type))
 
     with open("courses.csv", newline="", encoding="utf-8") as file:
         reader = csv.reader(file)
         next(reader)
         for course_code, course_name, max_capacity in reader:
-            courses.append(courses(course_code, course_name, max_capacity))
+            courses.append(Course(course_code, course_name, max_capacity))
 
     print (f"Initialized {len(students)} students and {len(courses)} courses.")
     
+    student_table = [[student.student_id, student.name, student.student_type] for student in students]
     print("Students:")
-    for student in students:
-        print(student)
+    print(tb.tabulate(student_table, headers=["Student ID", "Name", "Type"], tablefmt="grid"))
     
-    print("\nCourses:")
-    for course in courses:
-        print(course)
+    course_table = [[course.course_code, course.course_name, course.max_capacity] for course in courses]
+    print("Courses:")
+    print(tb.tabulate(course_table, headers=["Course Code", "Course Name", "Max Capacity"], tablefmt="grid"))
+   
 
 
 if __name__ == "__main__":
