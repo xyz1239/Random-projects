@@ -33,7 +33,6 @@ class Student:
         else:
             self.__enrolled_courses.append(course)
             print(f"{self.name} enrolled in {course.course_name}.")
-
     
     def __str__(self):
         return f"{self.name} (ID: {self.student_id}, Type: {self.student_type})"
@@ -56,6 +55,17 @@ class Course:
     @property
     def max_capacity(self):
         return self.__max_capacity
+    
+    def addstudent(self, student):
+        if len(self.__enrolled_students) >= self.max_capacity:
+            print(f"{self.course_name} is full.")
+        elif student in self.__enrolled_students:
+            print(f"{student.name} is already enrolled in {self.course_name}.")
+        elif not student.can_enroll():
+            print(f"{student.name} cannot enroll in more courses.")
+        else:
+            self.__enrolled_students.append(student)
+            print(f"{student.name} enrolled in {self.course_name}.")
     
     def __str__(self):
         return f"{self.course_name} (Code: {self.course_code}, Enrolled: 0/{self.max_capacity})"
