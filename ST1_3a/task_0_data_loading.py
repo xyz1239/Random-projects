@@ -7,6 +7,7 @@ class students:
         self.__name = name
         self.__student_type = student_type
 
+#I belive this is what it asked for, could be wrong though
     @property
     def student_id(self):
         return self.__student_id
@@ -44,22 +45,19 @@ class courses:
     def __str__(self):
         return f"{self.course_name} (Code: {self.course_code}, Enrolled: 0/{self.max_capacity})"
 
-def read_csv():
+def main():
+    students = []
+    courses = []
+    
     with open("students.csv", newline="", encoding="utf-8") as file:
         reader = csv.reader(file)
-        header = next(reader)
-        data = [row for row in reader]
-        
-        print(tb.tabulate(data, headers=header, tablefmt="grid"))
-
+        next(reader)
+        for student_id, name, student_type in reader:
+            students.append(students(student_id, name, student_type))
 
     with open("courses.csv", newline="", encoding="utf-8") as file:
         reader = csv.reader(file)
-        header = next(reader)
-        data = [row for row in reader]
-        
-        print(tb.tabulate(data, headers=header, tablefmt="grid"))
+        next(reader)
+        for course_code, course_name, max_capacity in reader:
+            courses.append(courses(course_code, course_name, max_capacity))
 
-
-def main():
-    
