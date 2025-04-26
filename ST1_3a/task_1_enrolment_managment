@@ -1,5 +1,10 @@
 import csv
 import tabulate as tb
+import time
+import os
+
+def clear_console():
+    os.system('cls' if os.name == 'nt' else 'clear')
 
 class Student: 
     def __init__(self, student_id, name, student_type):
@@ -69,6 +74,53 @@ class Course:
     
     def __str__(self):
         return f"{self.course_name} (Code: {self.course_code}, Enrolled: 0/{self.max_capacity})"
+    
+def menu(students, courses):
+    while True:
+        print("\nMenu:")
+        print("1. Enroll in a course")
+        print("2. View enrolled courses")
+        print("3. Exit")
+        
+        choice = input("Enter your choice: ")
+        
+        if choice == "1":
+            student_id = input("Enter student ID: ")
+            course_code = input("Enter course code: ")
+            
+            student = next((s for s in students if s.student_id == student_id), None)
+            course = next((c for c in courses if c.course_code == course_code), None)
+            
+            if student and course:
+                student.enroll(course)
+                course.addstudent(student)
+            else:
+                print("Invalid student ID or course code.")
+        
+        elif choice == "2":
+            student_id = input("Enter student ID: ")
+            student = next((s for s in students if s.student_id == student_id), None)
+            
+            if student:
+                print(f"Enrolled courses for {student.name}:")
+                for course in student._Student__enrolled_courses:
+                    print(course.course_name)
+            else:
+                print("Invalid student ID.")
+        
+        elif choice == "3":
+            wait_time = 5
+            for i in range(wait_time, 0, -1):
+                    print(f"Exiting in {i} seconds...", end="\r")
+                    time.sleep(1)
+                    clear_console()
+                    print("Goodbye!")
+                    time.sleep(1)
+                    clear_console()
+                    quit()
+                    break
+            else:
+                print("Invalid choice. Please try again.")
 
 def main():
     students = []
@@ -96,7 +148,7 @@ def main():
     print("Courses:")
     print(tb.tabulate(course_table, headers=["Course Code", "Course Name", "Max Capacity"], tablefmt="grid"))
    
-
+    menu(students, courses)
 
 if __name__ == "__main__":
     main()
